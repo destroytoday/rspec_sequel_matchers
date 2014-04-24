@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "rspec_sequel_matchers"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.summary = %q{RSpec Matchers for Sequel}
   s.homepage = %q{http://github.com/openhood/rspec_sequel_matchers}

@@ -1,3 +1,4 @@
+require "sequel"
 require "sequel/extensions/inflector"
 
 module RspecSequel
