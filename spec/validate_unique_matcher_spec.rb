@@ -36,7 +36,7 @@ describe "validate_unique_matcher" do
         @matcher = validate_unique :name
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
     end
     describe "with options" do
@@ -48,21 +48,21 @@ describe "validate_unique_matcher" do
         @matcher = validate_unique :price, :message => "Hello"
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
       it "should explicit used options if different than expected" do
         @matcher = validate_unique :name, :message => "Hello world"
         @matcher.matches? subject
         explanation = ' but called with option(s) :message => "Hello" instead'
         @matcher.failure_message.should == "expected Item to " + @matcher.description + explanation
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description + explanation
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description + explanation
       end
       it "should warn if invalid options are used" do
         @matcher = validate_unique :name, :allow_nil => true
         @matcher.matches? subject
         explanation = " but option :allow_nil is not valid"
         @matcher.failure_message.should == "expected Item to " + @matcher.description + explanation
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description + explanation
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description + explanation
       end
     end
   end

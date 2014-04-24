@@ -1,6 +1,3 @@
-require "sequel"
-require "sequel/extensions/inflector"
-
 module RspecSequel
 
   class Base
@@ -23,7 +20,7 @@ module RspecSequel
     def failure_message
       [@prefix, description, @suffix].flatten.compact.join(" ")
     end
-    def negative_failure_message
+    def failure_message_when_negated
       [@prefix, "not", description, @suffix].flatten.compact.join(" ")
     end
     def hash_to_nice_string(hash)

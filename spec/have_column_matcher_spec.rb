@@ -18,7 +18,7 @@ describe "have_column_matcher" do
         @matcher = have_column :name
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
     end
     describe "with type as symbol" do
@@ -30,7 +30,7 @@ describe "have_column_matcher" do
         @matcher = have_column :password, :type => :string
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
     end
     describe "with type as object" do
@@ -42,14 +42,14 @@ describe "have_column_matcher" do
         @matcher = have_column :password, :type => String
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
       it "should explicit found type if different than expected" do
         @matcher = have_column :name, :type => Integer
         @matcher.matches? subject
         explanation = " (type found: string, varchar(255))"
         @matcher.failure_message.should == "expected Item to " + @matcher.description + explanation
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description + explanation
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description + explanation
       end
     end
     describe "on anonymous Sequel::Model class" do
@@ -57,7 +57,7 @@ describe "have_column_matcher" do
         @matcher = have_column :password
         @matcher.matches? Sequel::Model(:comments)
         @matcher.failure_message.should == "expected Comment to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Comment to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Comment to not " + @matcher.description
       end
     end
     describe "on Sequel::Model class" do
@@ -65,7 +65,7 @@ describe "have_column_matcher" do
         @matcher = have_column :password
         @matcher.matches? Item
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
     end
     describe "on Sequel::Model instance" do
@@ -73,7 +73,7 @@ describe "have_column_matcher" do
         @matcher = have_column :password
         @matcher.matches? Item.new
         @matcher.failure_message.should == "expected #<Item @values={}> to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected #<Item @values={}> to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected #<Item @values={}> to not " + @matcher.description
       end
     end
   end

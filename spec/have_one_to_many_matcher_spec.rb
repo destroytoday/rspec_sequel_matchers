@@ -21,7 +21,7 @@ describe "have_one_to_many_matcher" do
         @matcher = have_one_to_many :comments
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
     end
     describe "with options" do
@@ -33,14 +33,14 @@ describe "have_one_to_many_matcher" do
         @matcher = have_one_to_many :comments, :class_name => "Comment"
         @matcher.matches? subject
         @matcher.failure_message.should == "expected Item to " + @matcher.description
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description
       end
       it "should explicit used options if different than expected" do
         @matcher = have_one_to_many :comments, :class_name => "Price"
         @matcher.matches? subject
         explanation = ' expected :class_name == "Price" but found "Comment" instead'
         @matcher.failure_message.should == "expected Item to " + @matcher.description + explanation
-        @matcher.negative_failure_message.should == "expected Item to not " + @matcher.description + explanation
+        @matcher.failure_message_when_negated.should == "expected Item to not " + @matcher.description + explanation
       end
     end
   end
